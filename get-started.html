@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <title>Get your Groq key — Bright</title>
 <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -11,11 +13,15 @@
 <nav class="nav">
   <div class="nav-inner">
     <a href="/" class="wordmark">Bright</a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-links">
       <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#how-it-works">How it works</a></li>
       <li><a href="https://github.com/tyngzfgsf/Bright" target="_blank" rel="noopener">GitHub</a></li>
     </ul>
-    <button class="theme-toggle" aria-label="Toggle theme"></button>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Toggle theme"></button>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
+    </div>
   </div>
 </nav>
 
@@ -84,5 +90,7 @@
 
 <script type="module" src="js/auth.js"></script>
 <script src="js/theme.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/animations.js"></script>
 </body>
 </html>
