@@ -3,12 +3,15 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
-  onAuthStateChanged
+  onAuthStateChanged,
+  deleteUser,
+  reauthenticateWithPopup
 } from 'https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js';
 import {
   doc,
   getDoc,
   setDoc,
+  deleteDoc,
   deleteField,
   serverTimestamp
 } from 'https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js';
@@ -21,6 +24,8 @@ const avatarEl = document.getElementById('dash-avatar');
 const nameEl = document.getElementById('dash-name');
 const emailEl = document.getElementById('dash-email');
 
+const authStatus = document.getElementById('auth-status');
+const keyForm = document.getElementById('key-form');
 const keyInput = document.getElementById('key-input');
 const saveKeyBtn = document.getElementById('save-key');
 const savedKeyRow = document.getElementById('saved-key-row');
@@ -28,6 +33,7 @@ const savedKeyMasked = document.getElementById('saved-key-masked');
 const updateKeyBtn = document.getElementById('update-key');
 const removeKeyBtn = document.getElementById('remove-key');
 const statusLine = document.getElementById('status-line');
+const deleteAccountBtn = document.getElementById('delete-account');
 
 function maskKey(key) {
   if (!key || key.length < 8) return '••••••••';
@@ -40,10 +46,14 @@ function setStatus(text) {
 
 signInBtn?.addEventListener('click', () => {
   const provider = new GoogleAuthProvider();
-  setStatus('Signing in…');
-  signInWithPopup(auth, provider).catch((err) => {
-    setStatus(err.message);
-  });
+  authStatus.textContent = 'Signing in…';
+  signInWithPopup(auth, provider)
+    .then(() => { authStatus.textContent = ''; })
+    .catch((err) => {
+      authStatus.textContent = err.code === 'auth/popup-closed-by-user'
+        ? 'Sign-in was cancelled.'
+        : 'Could not sign in: ' + err.message;
+    });
 });
 
 signOutBtn?.addEventListener('click', () => signOut(auth));
@@ -72,22 +82,24 @@ async function refreshSavedKey(uid) {
     if (data && data.groqApiKey) {
       savedKeyMasked.textContent = maskKey(data.groqApiKey);
       savedKeyRow.style.display = 'flex';
-      keyInput.parentElement.style.display = 'none';
+      keyForm.style.display = 'none';
     } else {
       savedKeyRow.style.display = 'none';
-      keyInput.parentElement.style.display = 'block';
+      keyForm.style.display = 'block';
     }
   } catch (err) {
     setStatus('Could not load your saved key: ' + err.message);
   }
 }
 
-saveKeyBtn?.addEventListener('click', async () => {
+keyForm?.addEventListener('submit', async (e) => {
+  e.preventDefault();
   const user = auth.currentUser;
   if (!user) return;
   const value = keyInput.value.trim();
   if (!value) {
     setStatus('Paste your Groq API key first.');
+    keyInput.focus();
     return;
   }
   saveKeyBtn.disabled = true;
@@ -110,7 +122,7 @@ saveKeyBtn?.addEventListener('click', async () => {
 
 updateKeyBtn?.addEventListener('click', () => {
   savedKeyRow.style.display = 'none';
-  keyInput.parentElement.style.display = 'block';
+  keyForm.style.display = 'block';
   keyInput.focus();
 });
 
@@ -128,5 +140,34 @@ removeKeyBtn?.addEventListener('click', async () => {
     await refreshSavedKey(user.uid);
   } catch (err) {
     setStatus('Could not remove: ' + err.message);
+  }
+});
+
+// Self-service deletion: removes the Firestore record, then the Firebase Auth user.
+// Firebase requires a recent sign-in to delete a user, so re-prompt once if needed.
+deleteAccountBtn?.addEventListener('click', async () => {
+  const user = auth.currentUser;
+  if (!user) return;
+  const ok = window.confirm(
+    'Delete your saved key and your Bright sign-in record? This cannot be undone.'
+  );
+  if (!ok) return;
+
+  deleteAccountBtn.disabled = true;
+  setStatus('Deleting…');
+  try {
+    await deleteDoc(doc(db, 'users', user.uid));
+    try {
+      await deleteUser(user);
+    } catch (err) {
+      if (err.code !== 'auth/requires-recent-login') throw err;
+      await reauthenticateWithPopup(user, new GoogleAuthProvider());
+      await deleteUser(user);
+    }
+    authStatus.textContent = 'Your data has been deleted.';
+  } catch (err) {
+    setStatus('Could not delete everything: ' + err.message);
+  } finally {
+    deleteAccountBtn.disabled = false;
   }
 });

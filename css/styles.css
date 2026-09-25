@@ -5,7 +5,24 @@
    in either mode — depth comes from weight, spacing and the orb motif only.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&display=swap');
+/* Archivo is self-hosted (SIL OFL 1.1, see fonts/OFL.txt) so visitors' browsers
+   never contact Google just to render a heading. */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500 800;
+  font-display: swap;
+  src: url('../fonts/archivo-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500 800;
+  font-display: swap;
+  src: url('../fonts/archivo-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
 
 :root {
   --bg: #FFFFFF;
@@ -14,6 +31,7 @@
   --text: #0A0A0A;
   --text-muted: #6B6B6B;
   --border: #E0E0E0;
+  --border-strong: #8A8A8A;
   --inverse-bg: #0A0A0A;
   --inverse-text: #FFFFFF;
 
@@ -33,6 +51,7 @@ html[data-theme="dark"] {
   --text: #F5F5F5;
   --text-muted: #9A9A9A;
   --border: #2A2A2A;
+  --border-strong: #767676;
   --inverse-bg: #F5F5F5;
   --inverse-text: #0A0A0A;
   color-scheme: dark;
@@ -46,6 +65,7 @@ html[data-theme="dark"] {
     --text: #F5F5F5;
     --text-muted: #9A9A9A;
     --border: #2A2A2A;
+  --border-strong: #767676;
     --inverse-bg: #F5F5F5;
     --inverse-text: #0A0A0A;
     color-scheme: dark;
@@ -79,6 +99,42 @@ body {
 button, .btn { touch-action: manipulation; }
 
 a { color: inherit; }
+
+/* Visible keyboard focus everywhere; mouse/touch clicks don't show it. */
+:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.btn:focus-visible, .google-btn:focus-visible { border-radius: 16px; }
+.key-input:focus-visible { outline-offset: 2px; border-radius: 12px; }
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--text);
+  color: var(--bg);
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.2s var(--ease);
+}
+.skip-link:focus { top: 12px; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 img, svg { display: block; max-width: 100%; }
 
@@ -151,7 +207,7 @@ img, svg { display: block; max-width: 100%; }
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
@@ -183,7 +239,7 @@ img, svg { display: block; max-width: 100%; }
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
@@ -224,7 +280,7 @@ img, svg { display: block; max-width: 100%; }
 .btn-outline {
   background: transparent;
   color: var(--text);
-  border-color: var(--border);
+  border-color: var(--border-strong);
 }
 
 .btn-row {
@@ -521,6 +577,84 @@ footer {
 .footer-links a { text-decoration: none; color: var(--text-muted); transition: color 0.2s var(--ease); }
 
 
+/* ---------- Disclaimer notice ---------- */
+
+.notice {
+  max-width: 640px;
+  margin: 28px auto 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.consent-note {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 16px 0 0;
+  line-height: 1.6;
+}
+.consent-note a, .notice a, .security-note a, .footer-note a, .feature-card a { color: var(--text); }
+
+/* ---------- Legal pages ---------- */
+
+.legal {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 64px 24px 96px;
+}
+
+.legal h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(32px, 5vw, 44px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 10px;
+}
+
+.legal .updated { color: var(--text-muted); font-size: 14px; margin: 0 0 40px; }
+
+.legal h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 21px;
+  letter-spacing: -0.01em;
+  margin: 44px 0 12px;
+  scroll-margin-top: 80px;
+}
+
+.legal h3 { font-size: 16px; margin: 24px 0 8px; }
+
+.legal p, .legal li { font-size: 15.5px; line-height: 1.7; }
+.legal ul { padding-left: 22px; }
+.legal li { margin-bottom: 6px; }
+
+.legal .callout {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin: 24px 0;
+}
+.legal .callout p { margin: 0; }
+
+.legal table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  margin: 12px 0 8px;
+  table-layout: fixed;
+}
+.legal td code { overflow-wrap: anywhere; }
+.legal th, .legal td {
+  text-align: left;
+  vertical-align: top;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.legal th { font-weight: 700; }
+.legal td, .legal th { overflow-wrap: break-word; hyphens: auto; }
+
 /* ---------- Get-started page ---------- */
 
 .auth-card {
@@ -551,7 +685,7 @@ footer {
   width: 100%;
   height: 52px;
   border-radius: 16px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
@@ -616,7 +750,7 @@ footer {
   margin-bottom: 14px;
 }
 
-.step-card h3 {
+.step-card h3, .step-card .step-card-title {
   font-size: 16px;
   font-weight: 700;
   margin: 0 0 8px;
@@ -633,7 +767,7 @@ footer {
   width: 100%;
   height: 50px;
   border-radius: 12px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
   background: var(--bg);
   color: var(--text);
   padding: 0 16px;
@@ -671,6 +805,14 @@ footer {
   font-family: var(--font-body);
 }
 
+
+.danger-zone {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.danger-zone h3 { font-size: 15px; font-weight: 700; margin: 0 0 6px; }
+.danger-zone p { font-size: 13.5px; color: var(--text-muted); margin: 0 0 14px; line-height: 1.6; }
 
 .status-line {
   font-size: 13.5px;
@@ -828,6 +970,10 @@ footer {
   footer { padding: 40px 20px calc(32px + env(safe-area-inset-bottom)); }
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
   .footer-links { flex-wrap: wrap; gap: 12px 22px; }
+
+  .legal { padding: 40px 20px 64px; }
+  .legal table { font-size: 13.5px; }
+  .legal th, .legal td { padding: 8px 6px; }
 
   /* Get-started page */
   .auth-card { margin: 40px auto 56px; padding: 32px 22px; }

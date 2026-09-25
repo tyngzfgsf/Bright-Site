@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<title>Privacy Policy — Bright</title>
+<meta name="description" content="How Bright handles your data: what the app and website collect, why, and how to delete it.">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="nav" aria-label="Main">
+  <div class="nav-inner">
+    <a href="/" class="wordmark" aria-label="Bright home">Bright</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#how-it-works">How it works</a></li>
+      <li><a href="get-started.html">Get your key</a></li>
+      <li><a href="https://github.com/tyngzfgsf/Bright-app/releases/latest" target="_blank" rel="noopener">Download<span class="sr-only"> (opens in a new tab)</span></a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Toggle theme"></button>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<main id="main" class="legal">
+<h1>Privacy Policy</h1>
+<p class="updated">Last updated: 25 September 2026</p>
+
+<p>This policy explains what the Bright Android app and this website (together, "Bright") collect, why, who else handles it, and how to delete it. Bright is a free, non-commercial project built and run by one individual developer (GitHub: <a href="https://github.com/tyngzfgsf" target="_blank" rel="noopener">tyngzfgsf</a>), who is responsible for the data described here.</p>
+
+<div class="callout"><p><strong>Short version:</strong> no ads, no selling data, no account needed to use the app. Your training history stays on your phone. Your answers go to Groq to be graded. The app sends anonymous usage events (no names, no answers, no text you type) to Firebase Analytics. Signing in on this website is optional and only stores your Google name, email, photo URL and the Groq key you choose to save.</p></div>
+
+<h2 id="app">1. The Bright app</h2>
+<h3>Stored only on your phone</h3>
+<ul>
+  <li>Your training sessions, answers, scores and statistics.</li>
+  <li>Your settings, including your Groq API key.</li>
+</ul>
+<p>This data never leaves your device except as described below. Uninstalling the app or clearing its storage deletes it.</p>
+
+<h3>Sent to Groq to run a session</h3>
+<p>When you train, the app sends the scenario and your answers directly from your phone to <a href="https://groq.com" target="_blank" rel="noopener">Groq</a>, using <em>your own</em> Groq API key, so the AI can play the case and grade you. The developer never receives this traffic. Groq handles it under your agreement with Groq and <a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener">Groq's Privacy Policy</a>.</p>
+<p><strong>Never enter real patient information or anything that identifies a real person.</strong> Bright is for practising hypothetical cases.</p>
+
+<h3>Voice mode</h3>
+<p>Voice mode uses your phone's built-in speech recognition and text-to-speech. Depending on your device, the speech-recognition service (usually Google's) may process your audio under its own privacy terms. Bright only receives the resulting text, and treats it like a typed answer. The microphone permission is used only while voice mode is active.</p>
+
+<h3>Anonymous usage analytics</h3>
+<p>The app uses <a href="https://firebase.google.com/docs/analytics" target="_blank" rel="noopener">Google Firebase Analytics</a> to learn which features are used, so development effort goes to the right places. Events are limited by design to fixed categories and numbers:</p>
+<ul>
+  <li>onboarding steps reached; sessions started, completed or abandoned;</li>
+  <li>scenario type (e.g. "stroke", or just "custom"), difficulty, trainee role and scores;</li>
+  <li>review sessions, streak length, and whether a Groq key was added (never the key itself).</li>
+</ul>
+<p>No answers, custom scenario text, names or keys are ever included. Firebase itself also records an app-instance ID, device model, OS version, app version and an approximate country/region derived from your IP address. The app does not use your advertising ID. Google processes this data, possibly outside your country, as described in <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase's privacy information</a>. Firebase keeps it for the retention period set on the project (Google's default is 2 months).</p>
+<p>The app doesn't have an in-app switch for analytics yet. If you'd rather not send these events, you can uninstall the app, or ask us to delete data linked to your app-instance ID (see section 5).</p>
+
+<h2 id="website">2. This website</h2>
+<h3>Browsing</h3>
+<p>The site is hosted on Google Firebase Hosting, which logs standard technical request data (IP address, browser user agent, page requested, time) for security and delivery. The website has no analytics, ads or tracking scripts. Fonts are served from this site, not from Google Fonts.</p>
+
+<h3>Optional sign-in to save your Groq key</h3>
+<p>If you choose to sign in with Google on the <a href="get-started.html">Get your key</a> page, we store:</p>
+<table>
+  <thead><tr><th>Data</th><th>Why</th><th>Where</th></tr></thead>
+  <tbody>
+    <tr><td>Google account ID, name, email, profile-photo URL</td><td>To sign you in and show you which account you're using</td><td>Firebase Authentication</td></tr>
+    <tr><td>The Groq API key you save, and when it was last updated</td><td>So you can copy it into the app later</td><td>Cloud Firestore, readable only by your signed-in account</td></tr>
+  </tbody>
+</table>
+<p>That's all. The site never sends your key to Groq or anywhere else. Legal basis: your consent, given when you sign in, which you can withdraw at any time by deleting your data.</p>
+
+<h2 id="cookies">3. Cookies and local storage</h2>
+<p>Bright's website does not set advertising or analytics cookies, so it doesn't show a cookie banner. It uses only storage that is strictly necessary for features you ask for:</p>
+<table>
+  <thead><tr><th>Name</th><th>Type</th><th>Purpose</th><th>Kept</th></tr></thead>
+  <tbody>
+    <tr><td><code>bright-theme</code></td><td>Local storage</td><td>Remembers light/dark mode if you pick one</td><td>Until you clear site data</td></tr>
+    <tr><td><code>firebase:authUser:*</code>, <code>firebaseLocalStorageDb</code></td><td>Local storage / IndexedDB</td><td>Keeps you signed in on the Get your key page (only if you sign in)</td><td>Until you sign out or clear site data</td></tr>
+  </tbody>
+</table>
+<p>When you sign in, Google's sign-in window (on Google's own domain) uses its own cookies under <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener">Google's cookie policy</a>. You can clear all of this at any time in your browser settings.</p>
+
+<h2 id="sharing">4. Who else handles data</h2>
+<p>We don't sell or rent personal data, and don't share it for advertising. The only service providers involved are:</p>
+<ul>
+  <li><strong>Google (Firebase)</strong> — website hosting, sign-in, the key database and app analytics.</li>
+  <li><strong>Groq</strong> — AI grading, under your own Groq account.</li>
+  <li><strong>GitHub</strong> — hosts app downloads and the issue tracker.</li>
+</ul>
+<p>We'll only disclose data otherwise if the law requires it.</p>
+
+<h2 id="rights">5. Your choices and rights</h2>
+<ul>
+  <li><strong>Delete website data yourself:</strong> sign in on <a href="get-started.html">Get your key</a> and press <em>Delete my data</em>. This deletes your saved key and your sign-in record immediately.</li>
+  <li><strong>Delete app data:</strong> uninstall Bright or clear its storage in Android settings.</li>
+  <li><strong>Other requests</strong> (access, correction, deleting analytics data, objecting to processing): <a href="https://github.com/tyngzfgsf/Bright-app/issues" target="_blank" rel="noopener">open an issue on GitHub</a> saying what you need — <strong>don't post personal details there</strong>; we'll reply on the issue with a private way to verify and complete your request.</li>
+</ul>
+<p>Depending on where you live (for example under Korea's Personal Information Protection Act or the EU/UK GDPR), you may have rights to access, correct, delete, restrict or port your data, to withdraw consent, and to complain to your data-protection authority.</p>
+
+<h2 id="security">6. Security</h2>
+<p>Saved keys are protected by database rules that only let the signed-in owner read or write their own record, and all traffic is encrypted (HTTPS). No system is perfectly secure, so treat your Groq key like a password: you can revoke it in the Groq console at any time.</p>
+
+<h2 id="children">7. Children</h2>
+<p>Bright is meant for medical and first-aid trainees and is not directed at children under 14. If you believe a child has signed in, contact us and we'll delete the data.</p>
+
+<h2 id="changes">8. Changes</h2>
+<p>If this policy changes, we'll update the date at the top. Significant changes will also be mentioned in the app's release notes.</p>
+
+<h2 id="contact">9. Contact</h2>
+<p><a href="https://github.com/tyngzfgsf/Bright-app/issues" target="_blank" rel="noopener">github.com/tyngzfgsf/Bright-app/issues</a> — please don't include personal information in a public issue.</p>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-note">Bright is built and maintained by one person, kept free on purpose. Questions? <a href="https://github.com/tyngzfgsf/Bright-app/issues" target="_blank" rel="noopener">Open an issue on GitHub</a>.</p>
+    <ul class="footer-links">
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="privacy.html#cookies">Cookies</a></li>
+      <li><a href="terms.html">Terms</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="js/theme.js"></script>
+<script src="js/nav.js"></script>
+</body>
+</html>

@@ -6,19 +6,20 @@
 <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <title>Bright — AI emergency training, on your phone</title>
-<meta name="description" content="Bright drills you on medical emergencies with an AI that asks, grades, and adapts. Free, open source, built by one person.">
+<meta name="description" content="Bright drills you on medical emergencies with an AI that asks, grades, and adapts. Free, no ads, built by one person. For practice only — not medical advice.">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="nav">
+<nav class="nav" aria-label="Main">
   <div class="nav-inner">
-    <a href="/" class="wordmark">Bright</a>
+    <a href="/" class="wordmark" aria-label="Bright home">Bright</a>
     <ul class="nav-links" id="nav-links">
       <li><a href="#features">Features</a></li>
       <li><a href="#how-it-works">How it works</a></li>
       <li><a href="get-started.html">Get your key</a></li>
-      <li><a href="https://github.com/tyngzfgsf/Bright" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://github.com/tyngzfgsf/Bright-app/releases/latest" target="_blank" rel="noopener">Download<span class="sr-only"> (opens in a new tab)</span></a></li>
     </ul>
     <div class="nav-actions">
       <button class="theme-toggle" aria-label="Toggle theme"></button>
@@ -27,16 +28,19 @@
   </div>
 </nav>
 
+<main id="main">
+
 <header class="hero">
   <div class="orb" aria-hidden="true"></div>
   <div class="hero-inner">
-    <p class="hero-eyebrow">Free · Open source · Android</p>
+    <p class="hero-eyebrow">Free · No ads · Android</p>
     <h1>Bright</h1>
-    <p class="lede">A step for your brighter future. Practice medical emergencies against an AI that asks one question at a time, grades what you say, and keeps going — no script, no repeats.</p>
+    <p class="lede">A step for your brighter future. Practice medical emergencies against an AI that asks one question at a time, grades what you say, and keeps going — no fixed script, so each run plays out differently.</p>
     <div class="btn-row">
-      <a class="btn btn-primary" href="https://github.com/tyngzfgsf/Bright-app/releases/latest" target="_blank" rel="noopener">Download for Android</a>
-      <a class="btn btn-outline" href="https://github.com/tyngzfgsf/Bright" target="_blank" rel="noopener">View source on GitHub</a>
+      <a class="btn btn-primary" href="https://github.com/tyngzfgsf/Bright-app/releases/latest" target="_blank" rel="noopener">Download for Android<span class="sr-only"> (opens GitHub releases in a new tab)</span></a>
+      <a class="btn btn-outline" href="#how-it-works">See how it works</a>
     </div>
+    <p class="notice">Bright is a practice tool, not medical advice or certified training. AI feedback can be wrong — always follow your official protocols and instructors. In a real emergency, call your local emergency number (119 in Korea).</p>
   </div>
 </header>
 
@@ -50,32 +54,32 @@
 
     <div class="feature-grid">
       <div class="feature-card">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M21 12c0 4.4-4 8-9 8-1.4 0-2.7-.3-3.9-.8L3 20l1-4.2C3.4 14.4 3 13.2 3 12c0-4.4 4-8 9-8s9 3.6 9 8Z"/></svg>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 12c0 4.4-4 8-9 8-1.4 0-2.7-.3-3.9-.8L3 20l1-4.2C3.4 14.4 3 13.2 3 12c0-4.4 4-8 9-8s9 3.6 9 8Z"/></svg>
         <h3>Scenarios, not scripts</h3>
         <p>The AI invents each case — cardiac arrest, anaphylaxis, stroke and more — and reveals it one question at a time, in character.</p>
       </div>
       <div class="feature-card">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M9 11.2 11.2 13.5 16 8.5"/><circle cx="12" cy="12" r="9.5"/></svg>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 11.2 11.2 13.5 16 8.5"/><circle cx="12" cy="12" r="9.5"/></svg>
         <h3>Scored as you go</h3>
-        <p>Every answer gets a 0–10 score and a line of honest feedback — not "good job," specifics on what you missed.</p>
+        <p>Every answer gets a 0–10 score and a line of AI feedback on what you missed — specifics, not "good job."</p>
       </div>
       <div class="feature-card">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3Z"/><path d="M6 11.5a6 6 0 0 0 12 0"/><path d="M12 18v3"/></svg>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3Z"/><path d="M6 11.5a6 6 0 0 0 12 0"/><path d="M12 18v3"/></svg>
         <h3>Hands-free voice mode</h3>
         <p>Speak your answers, hear the case play out. Live captions on screen, no button between turns.</p>
       </div>
       <div class="feature-card">
-        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.5 2.5 3.8 6 3.8 9.5s-1.3 7-3.8 9.5c-2.5-2.5-3.8-6-3.8-9.5S9.5 5 12 2.5Z"/></svg>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.5 2.5 3.8 6 3.8 9.5s-1.3 7-3.8 9.5c-2.5-2.5-3.8-6-3.8-9.5S9.5 5 12 2.5Z"/></svg>
         <h3>Korean and English</h3>
         <p>Auto-detects your phone's language on first launch. Switch anytime — the AI answers in whichever you pick.</p>
       </div>
       <div class="feature-card">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M7 3v18M17 8v13"/><circle cx="7" cy="19.5" r="2.2"/><circle cx="17" cy="6.5" r="2.2"/><path d="M9 6.5h4.5A3.5 3.5 0 0 1 17 10"/></svg>
-        <h3>Fully open source</h3>
-        <p>Every line is on GitHub under a private-dev-turned-public build log. Fork it, read it, fix it.</p>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.3 7.5 9.5 4.3-1.2 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg>
+        <h3>Your sessions stay on your phone</h3>
+        <p>No account needed and no ads. Your answers go to Groq only to be graded; your history is stored on your device. Details in the <a href="privacy.html">Privacy Policy</a>.</p>
       </div>
       <div class="feature-card">
-        <svg class="icon" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10 5.5h4"/></svg>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10 5.5h4"/></svg>
         <h3>Actually monochrome</h3>
         <p>Black, white, gray — nothing else. Follows your phone's light or dark mode automatically.</p>
       </div>
@@ -108,7 +112,7 @@
       <div class="step">
         <div class="step-num">4</div>
         <h3>See it add up</h3>
-        <p>Every session is saved locally, with a running average so you can watch yourself improve.</p>
+        <p>Every session is saved on your phone, with a running average so you can watch yourself improve.</p>
       </div>
     </div>
   </div>
@@ -118,20 +122,23 @@
   <div class="orb" aria-hidden="true"></div>
   <div class="band-inner">
     <h2>Bring your own free Groq key</h2>
-    <p>Bright runs on Groq's fast inference — sign in with Google, grab a free key from Groq's own console, and save it to your account in under a minute.</p>
+    <p>Bright runs on Groq's fast inference. Grab a free key from Groq's own console — optionally sign in with Google to save it here so it's easy to find later.</p>
     <div class="btn-row" style="justify-content:center">
       <a class="btn btn-primary" href="get-started.html">Get your key</a>
     </div>
   </div>
 </div>
 
+</main>
+
 <footer>
   <div class="footer-inner">
-    <p class="footer-note">Bright is built and maintained by one person, kept as free as possible on purpose — no ads, no accounts required to use the app, no hidden costs. If something's broken, it's probably just me not having gotten to it yet.</p>
+    <p class="footer-note">Bright is built and maintained by one person, kept free on purpose — no ads, no account required to use the app, no hidden costs. Found a problem? <a href="https://github.com/tyngzfgsf/Bright-app/issues" target="_blank" rel="noopener">Report it on GitHub</a>.</p>
     <ul class="footer-links">
-      <li><a href="https://github.com/tyngzfgsf/Bright" target="_blank" rel="noopener">Source</a></li>
       <li><a href="https://github.com/tyngzfgsf/Bright-app/releases/latest" target="_blank" rel="noopener">Latest release</a></li>
-      <li><a href="get-started.html">Get your key</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="privacy.html#cookies">Cookies</a></li>
+      <li><a href="terms.html">Terms</a></li>
     </ul>
   </div>
 </footer>

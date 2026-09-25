@@ -104,3 +104,12 @@ firebase deploy --only firestore:rules
 - The site never sends your Groq key anywhere except Firestore. It doesn't
   call the Groq API on your behalf — you copy the key into Bright's Settings
   screen on your phone yourself.
+- Users can delete their saved key and their Firebase Auth record themselves
+  from the "Delete my data" button on `get-started.html`.
+- No analytics or tracking scripts on the website; the Archivo font is
+  self-hosted in `fonts/` (SIL OFL, see `fonts/OFL.txt`) rather than loaded
+  from Google Fonts.
+
+`privacy.html` and `terms.html` describe all of this (plus the app's Groq and
+Firebase Analytics data flows) for end users. **If you change what the site or
+app collects, update `privacy.html` too.**
